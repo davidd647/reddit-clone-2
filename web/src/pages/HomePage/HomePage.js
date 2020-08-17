@@ -1,12 +1,15 @@
 import BlogLayout from 'src/layouts/BlogLayout'
 import BlogPostsCell from 'src/components/BlogPostsCell'
-// import BlogCommentsCell from 'src/components/BlogCommentsCell'
+import HomepagePost from 'src/components/HomepagePost'
 
 const HomePage = () => {
   return (
     <BlogLayout>
       <p>This is the homepage</p>
-      <p>BlogPostsCell:</p>
+
+      <HomepagePost />
+
+      <p className="pt-3">BlogPostsCell:</p>
       <BlogPostsCell />
       {/* <p>BlogCommentsCell:</p>
       <BlogCommentsCell /> */}

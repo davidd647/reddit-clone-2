@@ -14,11 +14,15 @@ const BlogPost = ({ post }) => {
   return (
     <div key={post.id}>
       <div className="card-body pb-3">
-        <span className="d-flex flex-row justify-content-between">
-          <span>
-            <FaSortUp onClick={upVote} />
-            <FaSortDown onClick={downVote} />
-            <span className="pr-1">{post.upvotes - post.downvotes}</span>
+        <span className="d-flex flex-row justify-content-between align-items-center">
+          <span className="d-flex align-items-center">
+            <span>{post.upvotes - post.downvotes}</span>
+            <div className="d-inline-block">
+              <div className="d-flex flex-column align-items-center px-1">
+                <FaSortUp onClick={upVote} />
+                <FaSortDown onClick={downVote} />
+              </div>
+            </div>
             <Link to={routes.blogPost({ id: post.id })}>{post.title}</Link>
           </span>
           <span>
