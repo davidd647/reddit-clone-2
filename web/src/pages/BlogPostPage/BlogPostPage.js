@@ -32,20 +32,19 @@ const BlogPostPage = ({ id }) => {
       <BlogPostCell id={id} />
 
       {isAuthenticated ? (
-        <Form onSubmit={onSubmit} className="card p-2">
+        <Form onSubmit={onSubmit} className="card p-2 mb-3">
           <Label name="title" className="mt-0">
-            Comment Content:
+            Add a Comment:
           </Label>
           <TextAreaField name="body" className="mb-3" />
           <div className="d-flex justify-content-between">
             <Submit>Post</Submit>
             <span>Posting comment as: {currentUser.email}</span>
           </div>
-
-          <hr />
         </Form>
       ) : null}
 
+      <span>Comments:</span>
       <BlogCommentsByParentIdCell parentPostId={id} />
     </BlogLayout>
   )
