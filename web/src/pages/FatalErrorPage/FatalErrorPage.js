@@ -6,6 +6,7 @@
 // avoid the possibility that it will cause its own error. If it does, Redwood will
 // still render a generic error page, but your users will prefer something a bit more
 // thoughtful. =)
+import { Link, routes } from '@redwoodjs/router'
 
 export default () => (
   <main>
@@ -47,6 +48,10 @@ export default () => (
     <section>
       <h1>
         <span>Something went wrong</span>
+        <br />
+        <span>
+          <Link to={routes.home()}>Home</Link>
+        </span>
       </h1>
     </section>
   </main>

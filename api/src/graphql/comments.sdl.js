@@ -10,6 +10,7 @@ export const schema = gql`
   }
 
   type Query {
+    parentPostIds(id: Int!): [Comment!]!
     comments: [Comment!]!
     comment(id: Int!): Comment!
   }

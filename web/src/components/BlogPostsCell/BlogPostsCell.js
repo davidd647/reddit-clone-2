@@ -1,4 +1,5 @@
 import BlogPost from 'src/components/BlogPost'
+import BlogCommentsByParentIdCell from 'src/components/BlogCommentsByParentIdCell'
 
 export const QUERY = gql`
   query BlogPostsQuery {
@@ -22,6 +23,11 @@ export const Failure = ({ error }) => <div>Error: {error.message}</div>
 
 export const Success = ({ posts }) => {
   return posts.map((post) => {
-    return <BlogPost key={post.id} post={post} />
+    return (
+      <div key={post.id}>
+        <BlogPost post={post} />
+        <BlogCommentsByParentIdCell id={post.id} />
+      </div>
+    )
   })
 }
