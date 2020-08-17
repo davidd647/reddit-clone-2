@@ -16,7 +16,13 @@ const BlogPostPage = ({ id }) => {
   const { isAuthenticated, currentUser } = useAuth()
 
   // this line breaks the page... ⬇️... why?
-  const [create] = useMutation(CREATE_COMMENT)
+  const [create] = useMutation(CREATE_COMMENT, {
+    onCompleted: () => {
+      // formMethods.reset()
+      alert('Thank you for your message')
+      location.reload()
+    },
+  })
 
   const onSubmit = (data) => {
     data.createdBy = currentUser.email

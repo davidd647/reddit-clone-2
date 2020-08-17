@@ -5,14 +5,10 @@ import HomepagePost from 'src/components/HomepagePost'
 const HomePage = () => {
   return (
     <BlogLayout>
-      <p>This is the homepage</p>
-
       <HomepagePost />
 
-      <p className="pt-3">BlogPostsCell:</p>
+      <p className="pt-3">Posts:</p>
       <BlogPostsCell />
-      {/* <p>BlogCommentsCell:</p>
-      <BlogCommentsCell /> */}
     </BlogLayout>
   )
 }

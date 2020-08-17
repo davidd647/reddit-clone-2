@@ -7,6 +7,7 @@ import {
   Submit,
   useMutation,
 } from '@redwoodjs/web'
+import { useForm } from 'react-hook-form'
 
 const CREATE_POST = gql`
   mutation CreatePostMutation($input: CreatePostInput!) {
@@ -18,21 +19,32 @@ const CREATE_POST = gql`
 
 const HomepagePost = () => {
   const { isAuthenticated, currentUser } = useAuth()
+  const formMethods = useForm()
 
-  const [create] = useMutation(CREATE_POST)
+  const [create, { loading }] = useMutation(CREATE_POST, {
+    onCompleted: () => {
+      formMethods.reset()
+      alert('Thank you for your message')
+      location.reload()
+    },
+  })
 
   const onSubmit = (data) => {
-    console.log(data)
     data.createdBy = currentUser.email
     data.upvotes = 0
     data.downvotes = 0
+
     create({ variables: { input: data } })
   }
 
   return (
     <>
       {isAuthenticated ? (
-        <Form onSubmit={onSubmit} className="card p-2">
+        <Form
+          onSubmit={onSubmit}
+          formMethods={formMethods}
+          className="card p-2"
+        >
           <div className="d-flex justify-content-between">
             <div className="w-100">
               <Label name="title" className="mt-0">
@@ -46,7 +58,7 @@ const HomepagePost = () => {
           <TextAreaField name="body" className="mb-3" />
 
           <div className="d-flex justify-content-between">
-            <Submit>Post</Submit>
+            <Submit disabled={loading}>Post</Submit>
             <span>Posting as: {currentUser.email}</span>
           </div>
         </Form>
