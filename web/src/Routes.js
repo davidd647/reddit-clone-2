@@ -19,7 +19,7 @@ const Routes = () => {
         name="blogComment"
       />
       <Route path="/blog-post/{id:Int}" page={BlogPostPage} name="blogPost" />
-      <Private>
+      <Private unauthenticated="home">
         <Route path="/comments/new" page={NewCommentPage} name="newComment" />
         <Route
           path="/comments/{id:Int}/edit"

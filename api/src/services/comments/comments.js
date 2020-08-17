@@ -1,9 +1,9 @@
 import { db } from 'src/lib/db'
 import { requireAuth } from 'src/lib/auth'
 
-export const parentPostIds = ({ id }) => {
+export const parentPostIds = ({ parentPostId }) => {
   return db.comment.findMany({
-    where: { id },
+    where: { parentPostId },
   })
 }
 

@@ -1,7 +1,8 @@
 export const QUERY = gql`
-  query {
-    parentPostIds {
+  query($parentPostId: Int!) {
+    parentPostIds(parentPostId: $parentPostId) {
       id
+      body
     }
   }
 `
@@ -12,8 +13,8 @@ export const Empty = () => <div>Empty</div>
 
 export const Failure = ({ error }) => <div>Error: {error.message}</div>
 
-export const Success = ({ comments }) => {
-  return JSON.stringify(comments)
+export const Success = ({ parentPostIds }) => {
+  return JSON.stringify(parentPostIds)
 }
 
 // query($id: Int!) {

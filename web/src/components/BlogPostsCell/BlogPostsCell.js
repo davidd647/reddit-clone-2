@@ -26,7 +26,7 @@ export const Success = ({ posts }) => {
     return (
       <div key={post.id}>
         <BlogPost post={post} />
-        <BlogCommentsByParentIdCell id={post.id} />
+        <BlogCommentsByParentIdCell parentPostId={post.id} />
       </div>
     )
   })
